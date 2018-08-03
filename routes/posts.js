@@ -48,21 +48,47 @@ router.post('/', auth.requireLogin, (req, res, next) => {
 
     let post = new Post(req.body);
     post.country = country;
+    User.findById(req.session.userId, function(err, user) {
+       if (err){console.error(err);};
+       post.user = user.username;
+    });
 
     post.save(function(err, post) {
       if(err) { console.error(err) };
       User.findByIdAndUpdate(req.session.userId, {$inc: {numposts: 1}}).then(() => {
         return res.redirect(`/countries/${country._id}`);
-      })
+      });
     });
   });
 
 });
 
 router.post('/:id', auth.requireLogin, (req, res, next) => {
-  Post.findById(req.params.id, function(err, post) {
-    post.points += parseInt(req.body.points);
+  const currentUserId = req.session.userId;
+  var found = 0;
 
+  Post.findById(req.params.id, function(err, post) {
+    User.findById(currentUserId, function(err, user) {
+       if (err){console.error(err);};
+
+       for (let i = 0; i < post.voters.length; i++)
+       {
+         console.log('goes through for')
+         if (post.voters[i].username === user.username)
+         {
+           console.log("found");
+           found = 1;
+         }
+       }
+       post.voters.push(user);
+    });
+    if (found == 1)
+    {
+      console.log("found 2");
+      return res.redirect(`/countries/${post.country}`);
+    }
+
+    post.points += parseInt(req.body.points);
     post.save(function(err, post) {
       if(err) { console.error(err) };
 

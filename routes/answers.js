@@ -28,7 +28,7 @@ router.post('/', auth.requireLogin, (req, res, next) => {
       if(err) { console.error(err) };
 
       let answer = new Answer(req.body);
-      question.answers.unshift(answer);
+      question.answers.push(answer);
 
       question.save(function(err, question) {
         if(err) { console.error(err) };

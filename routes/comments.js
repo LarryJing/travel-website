@@ -26,7 +26,7 @@ router.post('/', auth.requireLogin, (req, res, next) => {
       if(err) { console.error(err) };
 
       let comment = new Comment(req.body);
-      post.comments.unshift(comment);
+      post.comments.push(comment);
 
       post.save(function(err, post) {
         if(err) { console.error(err) };

@@ -10,7 +10,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       {{#each dos as |post|}}
-        <div class="card mb-3">
+        <div class="card mb-0">
           <div class="card-body">
             <h3 class="card-title text-center">{{post.title}}</h3>
             <p>{{post.body}}</p>
@@ -33,17 +33,19 @@
           </div>
         </div>
         <!-- Add everything between the <ul>...</ul> tags -->
-        <ul>
-          {{#each post.comments as |comment|}}
-            <div class="card-footer text-muted text-center">
-              <p>{{comment.body}}</p>
+        <div class="comments">
+          <ul style="padding-left: 0">
+            {{#each post.comments as |comment|}}
+              <div class="card-footer text-muted text-center mb-0">
+                <p>{{comment.body}}</p>
+              </div>
+            {{/each}}
+            <div class="text-center" style="padding:10px">
+              <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
             </div>
-          {{/each}}
-          <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
-        </ul>
-
+          </ul>
+        </div>
       {{/each}}
-
     </div>
   </div>
 
@@ -52,7 +54,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       {{#each donts as |post|}}
-        <div class="card mb-3">
+        <div class="card mb-0">
           <div class="card-body">
             <h3 class="card-title text-center">{{post.title}}</h3>
             <p>{{post.body}}</p>
@@ -75,12 +77,18 @@
           </div>
         </div>
         <!-- Add everything between the <ul>...</ul> tags -->
-        <ul>
-          {{#each post.comments as |comment|}}
-            <li>{{comment.body}}</li>
-          {{/each}}
-          <li><a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a></li>
-        </ul>
+        <div class="comments">
+          <ul style="padding-left: 0">
+            {{#each post.comments as |comment|}}
+              <div class="card-footer text-muted text-center mb-0">
+                <p>{{comment.body}}</p>
+              </div>
+            {{/each}}
+            <div class="text-center" style="padding:10px">
+              <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
+            </div>
+          </ul>
+        </div>
 
       {{/each}}
 
