@@ -1,0 +1,26 @@
+<div class="login-container">
+<div class="container">
+  <div class="text-center">
+  {{#if err}}
+    <h4 class="red">The User name is already taken!</h4>
+  {{/if}}
+  </div >
+  <div class="login-newuser">
+    <form class="square"action="/users" method="post">
+    <legend> New User</legend>
+
+    <div class="form-group">
+      <label for="user-username"> Username</label>
+      <input type="text" name="username" class="form-control" id="user-username" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <label for="user-password"> password</label>
+      <input type="password" name="password" class="form-control" id="user-password" placeholder="password">
+    </div>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary">sign up</button>
+    </div>
+    </form>
+  </div>
+</div>
+</div>

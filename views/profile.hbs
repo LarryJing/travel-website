@@ -1,0 +1,36 @@
+<div class="profileheader">
+  <h1>{{user.username}}</h1>
+</div>
+<div class="layout_3col_left" id="__w2_Be3dumF_left_col">
+  <div id="__w2_Be3dumF_left_col_inner">
+    <div class="NavList ProfileNavList EditableList" id="__w2_PsCG6my_wrapper">
+      <h3 class="title">
+        <div>Content</div>
+      </h3>
+      <ul>
+        <div class="nav_item_selected">
+          <div id="contentposts">
+            <li class="EditableListItem AnswersNavItem NavItem NavListItem not_removable">
+              <a href="/profile/{{currentUserId}}">Posts: <span class="list_count">{{user.numposts}}</span></a>
+            </li>
+          </div>
+        </div>
+        <div>
+          <div id="contentquestions">
+            <li class="EditableListItem NavItem QuestionsNavItem NavListItem not_removable">
+              <a href="/profile/{{currentUserId}}/questions">Questions: <span class="list_count">{{user.numquestions}}</span></a>
+            </li>
+          </div>
+        </div>
+        <div>
+          <div id="contentquestions">
+            <li class="EditableListItem NavItem QuestionsNavItem NavListItem not_removable">
+              <a href="/profile/{{currentUserId}}/answers">Answers: <span class="list_count">{{user.numanswers}}</span></a>
+            </li>
+          </div>
+        </div>
+      </ul>
+      <div class="edit_mode_only"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="row justify-content-md-center">
+  <div class="col-8">
+    <form action="/countries/{{country.id}}/questions/{{question.id}}/answers" method="post" id="new-answer-form">
+      <legend>New Answer</legend>
+
+      <div class="form-group">
+        <textarea type="text" name="answer" class="form-control" id="answer-body" placeholder="Body" form="new-answer-form"></textarea>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

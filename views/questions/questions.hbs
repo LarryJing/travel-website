@@ -1,0 +1,44 @@
+<div class="countrytitle row justify-content-center">
+  <h1>{{country.countryname}}</h1>
+</div>
+<div class="row justify-content-center">
+  <a href="/countries/{{country.id}}/questions/new">New Question</a>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-8">
+    {{#each questions as |question|}}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="card-title text-center">{{question.question}}</h3>
+        </div>
+
+        <div class="card-footer text-muted text-right">
+          <span class="points-span">{{question.points}} points </span>
+
+          <div class="btn-group btn-group-sm">
+            <form action="/countries/{{question.country}}/questions/{{question.id}}" method="post" class="inline-form">
+              <input type="hidden" name="points" id="question-points" value="-1">
+              <button type="submit" class="downvote-button">-</button>
+            </form>
+
+            <form action="/countries/{{question.country}}/questions/{{question.id}}" method="post" class="inline-form">
+              <input type="hidden" name="points" id="question-points" value="1">
+              <button type="submit" class="upvote-button">+</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Add everything between the <ul>...</ul> tags -->
+      <ul>
+        {{#each question.answers as |answer|}}
+          <li>{{answer.answer}}</li>
+
+        {{/each}}
+        <li><a href="/countries/{{../country.id}}/questions/{{question.id}}/answers/new">New Answer</a></li>
+      </ul>
+
+    {{/each}}
+
+  </div>
+</div>

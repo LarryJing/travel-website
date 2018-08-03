@@ -1,0 +1,26 @@
+<div>
+  <form action="/countries/{{country._id}}/posts" method="post">
+    <legend>New Post</legend>
+
+    <div class="form-group">
+      <label for="post-subject">Subject</label>
+      <input type="text" name="title" class="form-control" id="post-title">
+    </div>
+
+    <div class="form-group">
+      <label for="post-body">Additional information</label>
+      <input type="text" name="body" class="form-control" id="post-body">
+    </div>
+
+    <div class="form-group">
+      <select name="yesno">
+        <option value="true">Do</option>
+        <option value="false">Dont</option>
+      </select>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

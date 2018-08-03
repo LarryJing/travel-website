@@ -1,0 +1,90 @@
+<div class="countrytitle row justify-content-center">
+  <h1>{{country.countryname}}</h1>
+</div>
+<div class="row justify-content-center">
+  <a href="/countries/{{country.id}}/posts/new">New Post</a><br/>
+  <a href="/countries/{{country.id}}/questions">Questions?</a><br/>
+</div>
+
+<div class='left-col'>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      {{#each dos as |post|}}
+        <div class="card mb-3">
+          <div class="card-body">
+            <h3 class="card-title text-center">{{post.title}}</h3>
+            <p>{{post.body}}</p>
+          </div>
+
+          <div class="card-footer text-muted text-right">
+            <span class="points-span">{{post.points}} points </span>
+
+            <div class="btn-group btn-group-sm">
+              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                <input type="hidden" name="points" id="post-points" value="-1">
+                <button type="submit" class="downvote-button">-</button>
+              </form>
+
+              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                <input type="hidden" name="points" id="post-points" value="1">
+                <button type="submit" class="upvote-button">+</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Add everything between the <ul>...</ul> tags -->
+        <ul>
+          {{#each post.comments as |comment|}}
+            <div class="card-footer text-muted text-center">
+              <p>{{comment.body}}</p>
+            </div>
+          {{/each}}
+          <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
+        </ul>
+
+      {{/each}}
+
+    </div>
+  </div>
+
+</div>
+<div class='right-col'>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      {{#each donts as |post|}}
+        <div class="card mb-3">
+          <div class="card-body">
+            <h3 class="card-title text-center">{{post.title}}</h3>
+            <p>{{post.body}}</p>
+          </div>
+
+          <div class="card-footer text-muted text-right">
+            <span class="points-span">{{post.points}} points </span>
+
+            <div class="btn-group btn-group-sm">
+              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                <input type="hidden" name="points" id="post-points" value="-1">
+                <button type="submit" class="downvote-button">-</button>
+              </form>
+
+              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                <input type="hidden" name="points" id="post-points" value="1">
+                <button type="submit" class="upvote-button">+</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Add everything between the <ul>...</ul> tags -->
+        <ul>
+          {{#each post.comments as |comment|}}
+            <li>{{comment.body}}</li>
+          {{/each}}
+          <li><a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a></li>
+        </ul>
+
+      {{/each}}
+
+    </div>
+  </div>
+
+</div>

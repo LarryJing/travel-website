@@ -1,0 +1,124 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+form {
+  max-width: 20em;
+}
+
+br {
+  clear: left;
+}
+
+.left-col {
+  width: 50%;
+  min-height: 100vh;
+  border-right: 1px solid black;
+  float: left;
+  box-sizing: border-box;
+}
+
+.right-col {
+  width: 50%;
+  min-height: 100vh;
+  float: right;
+}
+
+#navbar-custom{
+  background-color: #000000;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+}
+
+#navbar-custom a{
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  font-size: 16px;
+  text-shadow: 0px 0px 1px black;
+}
+
+#navbar-custom a:hover{
+  background-color: #aaa;
+  transition: 250ms;
+}
+
+#navbar-custom div{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar-form{
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.navbar-form .form-group{
+  margin: 0;
+}
+
+.form-control{
+  border-radius: 0 !important;
+}
+
+#search-button{
+  border-radius: 0;
+}
+
+#search-button:hover{
+  background-color: #aaa;
+}
+
+#ol {
+  column-count: 3;
+  list-style: none;
+  padding: 25px;
+}
+
+#ol li {
+  padding: 5px;
+}
+
+.countrieslist {
+  margin-bottom: 1em;
+}
+
+.login-container{
+    background-size: 100%;
+    margin-bottom: 200px;
+}
+
+.login-newuser{
+    display: flex;
+    padding: 100px;
+    justify-content: center;
+    align-content: center;
+}
+
+.countrytitle {
+  display: flex;
+  justify-content: center;
+}
+
+.layout_3col_left {
+    width: 142px;
+    float: left;
+    min-height: 1px;
+    margin-left: 30px;
+    clear: left;
+    font-size: 13px;
+}
+
+.profileheader {
+  padding: 15px;
+  display: grid;
+}
