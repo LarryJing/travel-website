@@ -45,7 +45,12 @@ p {
 }
 
 .links {
+  width: 100px;
+  margin: auto;
   padding: 5px;
+  border-top: 1px dotted gray;
+  border-left: 1px dotted gray;
+  border-right: 1px dotted gray;
 }
 
 .square {
