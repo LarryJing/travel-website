@@ -1,14 +1,17 @@
 <div class="countrytitle row justify-content-center">
   <h1>{{country.countryname}}</h1>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center links">
   <a href="/countries/{{country.id}}/posts/new">New Post</a><br/>
+</div>
+<div class="row justify-content-center links">
   <a href="/countries/{{country.id}}/questions">Questions?</a><br/>
 </div>
 
 <div class='left-col'>
   <div class="row justify-content-center">
     <div class="col-8">
+      <h1 class="dodont">Do's</h1>
       {{#each dos as |post|}}
         <div class="card mb-0">
           <div class="card-body">
@@ -53,6 +56,7 @@
 <div class='right-col'>
   <div class="row justify-content-center">
     <div class="col-8">
+      <h1 class="dodont">Don'ts</h1>
       {{#each donts as |post|}}
         <div class="card mb-0">
           <div class="card-body">

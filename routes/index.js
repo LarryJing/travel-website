@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/user');
+const Country = require('../models/country');
 
 // set layout variables
 router.use(function(req, res, next) {
@@ -21,6 +22,20 @@ router.get('/', function(req, res, next) {
         res.render('index', { title: 'SafeTravels', currentUserId: currentUserId, username: user.username});
     });
   }
+});
+
+router.get('/search', (req, res) => {
+  let search = req.query.search
+  // const searchterm = `/^${search}/`
+
+  Country.findOne({countryname: {$regex: search, $options: "i"}}, function(err, country){
+    if (country === null) {
+      res.render('error', { title: "Sorry, we couldn't find what you were looking for :(\ Please enter in a country."})
+    }
+    else{
+      res.redirect(`/countries/${country._id}`);
+    }
+  });
 });
 
 // login

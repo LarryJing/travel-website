@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="684154828481-8rv7u4c49cotlhlcvlvdvp1q6l58k80s.apps.googleusercontent.com">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
@@ -21,18 +23,26 @@
           </div>
 
           <div id="navbar-center">
-            <form class="navbar-form navbar-left" action="/action_page.php">
+            <form class="navbar-form navbar-left" action="/search">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search" name="search">
               </div>
-              <button type="submit" id="search-button" class="btn btn-default">Submit</button>
+              <button type="submit" id="search-button" class="btn btn-default">Search</button>
             </form>
           </div>
 
           <div id="navbar-right">
            {{#if currentUserId}}
            <a href="/profile/{{currentUserId}}">Profile</a>
-           <a class="nav-custom" href="/logout">Log Out</a>
+           <a class="nav-custom" href="/logout" onclick="signOut()">Log Out</a>
+           <script>
+            function signOut() {
+              var auth2 = gapi.auth2.getAuthInstance();
+              auth2.signOut().then(function () {
+                console.log('User signed out.');
+              });
+            }
+           </script>
            {{else}}
             <a class="nav-custom" href="/login">Sign in</a>
            {{/if}}
