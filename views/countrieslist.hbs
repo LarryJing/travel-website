@@ -1,13 +1,15 @@
-<div class="countrytitle">
-  <h1>Countries</h1>
-</div>
-<div class="countrieslist">
-  <ul id = "ol" >
-    {{#each countries as |country|}}
-      <li>
-        <a href="/countries/{{country._id}}" class="list-group-item list-group-item-action list-group-item-light">{{country.countryname}}</a>
-      </li>
-    {{/each}}
-    <br />
-  </ul>
+<div id="listbackground">
+  <div class="countrytitle">
+    <h1>Countries</h1>
+  </div>
+  <div class="countrieslist">
+    <ul id = "ol" >
+      {{#each countries as |country|}}
+        <li>
+          <a href="/countries/{{country._id}}" class="list-group-item list-group-item-action list-group-item-light">{{country.countryname}}</a>
+        </li>
+      {{/each}}
+      <br />
+    </ul>
+  </div>
 </div>

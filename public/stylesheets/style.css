@@ -22,6 +22,9 @@ p {
     box-sizing: border-box;
 }
 
+.homeCarousel {
+}
+
 .left-col {
   width: 50%;
   min-height: 100vh;
@@ -191,14 +194,25 @@ p {
   grid-gap: 10px;
 }
 
+#backgroundpicafterc {
+  background-image: url("../images/wolfbackground.jpg");
+  background-size: cover;
+}
+
+#listbackground {
+  background-image: url("../images/backgroundworldmap.jpg");
+  background-size: cover;
+  height: 700px;
+}
+
 .box {
     padding: 20px;
 }
 
 .a {
-    background-color: aquamarine;
+  border: 1px ridge black;
 }
 
 .b {
-  background-color: bisque;
+  border: 1px ridge black;
 }
