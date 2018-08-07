@@ -111,13 +111,21 @@ p {
   background-color: #aaa;
 }
 
-#ol {
-  column-count: 3;
-  list-style: none;
-  padding: 25px;
+#footer {
+  background-color: #111111;
+  color: white;
 }
 
-#ol li {
+.lol {
+  display: flex;
+  justify-content: space-around; /* space-between space-around */
+  align-items: center;
+  column-count: 3;
+  list-style: none;
+  padding: 30px;
+}
+
+.lol li {
   padding: 5px;
 }
 
@@ -218,4 +226,23 @@ p {
 .b {
   color: black;
   border: 1px ridge black;
+}
+
+#privacypolicy {
+  padding: 5px 50px 25px 50px;
+}
+#privacypolicy p {
+  padding: 5px;
+}
+#privacypolicy h1 {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 3px double black;
+}
+#privacypolicy h2 {
+  text-align: center;
+  padding: 5px;
+}
+#privacypolicy li {
+  padding: 5px;
 }

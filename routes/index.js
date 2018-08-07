@@ -124,4 +124,8 @@ router.get('/logout', (req, res, next) => {
   return res.redirect('/');
 });
 
+router.get('/privacy', (req, res, next) => {
+  res.render('privacy');
+})
+
 module.exports = router;
