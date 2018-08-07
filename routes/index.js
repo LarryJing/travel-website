@@ -13,6 +13,26 @@ router.use(function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  function onSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    var profile = googleUser.getBasicProfile();
+    name = profile.getName();
+    User.findById(user._id, function(err, user) {
+      if (user === null) {
+        const user = new User();
+        user.username = name;
+        user.password = user._id;
+
+        user.save(function(err, user) {
+          if(err) return res.redirect(`/users/new?err=${err}`);
+          return res.redirect('/');
+        });
+      }
+      else {
+        const currentUserId = req.session.userId;
+      }
+    });
+  }
   const currentUserId = req.session.userId;
   if (!currentUserId){
     res.render('index', { title: 'SafeTravels', currentUserId: currentUserId});
@@ -52,10 +72,6 @@ router.post('/login', (req, res, next) => {
 
       return next(next_error);
     } else {
-      function onSignIn(googleUser) {
-        var id_token = googleUser.getAuthResponse().id_token;
-        req.session.userId = user._id;
-      }
       req.session.userId = user._id;
       return res.redirect('/') ;
     }
