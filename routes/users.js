@@ -15,12 +15,12 @@ router.post('/', (req, res) => {
   User.find({username: req.body.username}, function(err, user) {
     if (user === null) {
       user.save(function(err, user) {
-        if(err) return res.redirect(`/users/new?err=${err}`)
+        if(err) return res.redirect(`/users/new?err=${err}`);
         return res.redirect('/');
       });
     }
     else {
-      res.render('error', {title: "Username is taken"})
+      res.render('error', {title: "Username is taken"});
     }
   })
 });
