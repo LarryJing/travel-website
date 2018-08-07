@@ -52,8 +52,11 @@ router.post('/login', (req, res, next) => {
 
       return next(next_error);
     } else {
+      function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+        req.session.userId = user._id;
+      }
       req.session.userId = user._id;
-
       return res.redirect('/') ;
     }
   });
@@ -61,6 +64,17 @@ router.post('/login', (req, res, next) => {
 
 // get profile page
 router.get('/profile/:id', function(req, res, next) {
+
+  if (auth2.isSignedIn.get()) {
+    var profile = auth2.currentUser.get().getBasicProfile();
+    console.log('ID: ' + profile.getId());
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+  }
+
   const currentUserId = req.session.userId;
   User.findById(currentUserId, function(err, user) {
     if (err){console.error(err);};

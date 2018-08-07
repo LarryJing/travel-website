@@ -169,12 +169,13 @@ p {
   max-width: 100%;
   right: 29px;
   color: #ff7a51;
+  background-color: #f6f6f6;
 }
 
 #desc {
   display: inline-block;
   width: 700px;
-  color: black;
+  color: #113000;
   font-size: 20px;
   font-family: "Verdana", sans-serif;
 }
@@ -192,11 +193,11 @@ p {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 10px;
+  background-image: url("../images/wolfbackground.jpg");
+  background-size: cover;
 }
 
 #backgroundpicafterc {
-  background-image: url("../images/wolfbackground.jpg");
-  background-size: cover;
 }
 
 #listbackground {
@@ -210,9 +211,11 @@ p {
 }
 
 .a {
+  color: black;
   border: 1px ridge black;
 }
 
 .b {
+  color: black;
   border: 1px ridge black;
 }

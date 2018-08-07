@@ -34,7 +34,7 @@
           <div id="navbar-right">
            {{#if currentUserId}}
            <a href="/profile/{{currentUserId}}">Profile</a>
-           <a class="nav-custom" href="/logout" onclick="signOut()">Log Out</a>
+           <a class="nav-custom" href="/logout" onclick="signOut();">Log Out</a>
            <script>
             function signOut() {
               var auth2 = gapi.auth2.getAuthInstance();
