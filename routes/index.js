@@ -13,28 +13,29 @@ router.use(function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  function onSignIn(googleUser) {
-    var id_token = googleUser.getAuthResponse().id_token;
-    var profile = googleUser.getBasicProfile();
-    name = profile.getName();
-    console.log("in onsignin");
-    User.findById(user._id, function(err, user) {
-      if (user === null) {
-        const user = new User();
-        user.username = name;
-        user.password = user._id;
-
-        user.save(function(err, user) {
-          if(err) return res.redirect(`/users/new?err=${err}`);
-          return res.redirect('/');
-        });
-      }
-      else {
-        cosole.log("signed in");
-        const currentUserId = id_token;
-      }
-    });
-  }
+  console.log("home page");
+  // function onSignIn(googleUser) {
+  //   var id_token = googleUser.getAuthResponse().id_token;
+  //   var profile = googleUser.getBasicProfile();
+  //   name = profile.getName();
+  //   console.log("in onsignin");
+  //   User.findById(user._id, function(err, user) {
+  //     if (user === null) {
+  //       const user = new User();
+  //       user.username = name;
+  //       user.password = user._id;
+  //
+  //       user.save(function(err, user) {
+  //         if(err) return res.redirect(`/users/new?err=${err}`);
+  //         return res.redirect('/');
+  //       });
+  //     }
+  //     else {
+  //       cosole.log("signed in");
+  //       const currentUserId = id_token;
+  //     }
+  //   });
+  // }
   const currentUserId = req.session.userId;
   if (!currentUserId){
     res.render('index', { title: 'SafeTravels', currentUserId: currentUserId});
@@ -82,16 +83,6 @@ router.post('/login', (req, res, next) => {
 
 // get profile page
 router.get('/profile/:id', function(req, res, next) {
-
-  if (auth2.isSignedIn.get()) {
-    var profile = auth2.currentUser.get().getBasicProfile();
-    console.log('ID: ' + profile.getId());
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-  }
 
   const currentUserId = req.session.userId;
   User.findById(currentUserId, function(err, user) {
