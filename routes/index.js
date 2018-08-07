@@ -126,6 +126,10 @@ router.get('/logout', (req, res, next) => {
 
 router.get('/privacy', (req, res, next) => {
   res.render('privacy');
-})
+});
+
+router.get('/attributions', (req, res, next) => {
+  res.render('cred');
+});
 
 module.exports = router;
