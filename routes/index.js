@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
     var id_token = googleUser.getAuthResponse().id_token;
     var profile = googleUser.getBasicProfile();
     name = profile.getName();
+    console.log("in onsignin");
     User.findById(user._id, function(err, user) {
       if (user === null) {
         const user = new User();
@@ -29,7 +30,8 @@ router.get('/', function(req, res, next) {
         });
       }
       else {
-        const currentUserId = req.session.userId;
+        cosole.log("signed in");
+        const currentUserId = id_token;
       }
     });
   }
