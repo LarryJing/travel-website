@@ -117,9 +117,6 @@ p {
 }
 
 .lol {
-  display: flex;
-  justify-content: space-around; /* space-between space-around */
-  align-items: center;
   column-count: 3;
   list-style: none;
   padding: 30px;
