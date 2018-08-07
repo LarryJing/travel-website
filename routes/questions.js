@@ -45,12 +45,15 @@ router.post('/', auth.requireLogin, (req, res, next) => {
     let question = new Question(req.body);
     question.country = country;
 
-    question.save(function(err, question) {
-      if(err) { console.error(err) };
-
-      User.findByIdAndUpdate(req.session.userId, {$inc: {numquestions: 1}}).then(() => {
-        return res.redirect(`/countries/${country.id}/questions`);
-      });
+    User.findById(req.session.userId, function(err, user) {
+       if (err){console.error(err);};
+       question.user = user.username;
+       question.save(function(err, question) {
+         if(err) { console.error(err) };
+         User.findByIdAndUpdate(req.session.userId, {$inc: {numquestions: 1}}).then(() => {
+           return res.redirect(`/countries/${country.id}/questions`);
+         });
+       });
     });
   });
 });

@@ -51,16 +51,15 @@ router.post('/', auth.requireLogin, (req, res, next) => {
     User.findById(req.session.userId, function(err, user) {
        if (err){console.error(err);};
        post.user = user.username;
-    });
-
-    post.save(function(err, post) {
-      if(err) { console.error(err) };
-      User.findByIdAndUpdate(req.session.userId, {$inc: {numposts: 1}}).then(() => {
-        return res.redirect(`/countries/${country._id}`);
-      });
+       console.log("post user:" + post.user);
+       post.save(function(err, post) {
+         if(err) { console.error(err) };
+         User.findByIdAndUpdate(req.session.userId, {$inc: {numposts: 1}}).then(() => {
+           return res.redirect(`/countries/${country._id}`);
+         });
+       });
     });
   });
-
 });
 
 router.post('/:id', auth.requireLogin, (req, res, next) => {

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/user');
 const Country = require('../models/country');
+const Post = require('../models/post');
+const Question = require('../models/question')
 
 // set layout variables
 router.use(function(req, res, next) {
@@ -87,10 +89,30 @@ router.get('/profile/:id', function(req, res, next) {
   const currentUserId = req.session.userId;
   User.findById(currentUserId, function(err, user) {
     if (err){console.error(err);};
-
-    res.render('profile', { user:user, currentUserId: currentUserId , username: user.username});
+    name = user.username;
+    console.log(name);
+    Post.find({ user: name }).sort({ points: -1 }).populate('comments').exec(function(err, posts1) {
+      if(posts1 === null) { res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, posts: userposts}); };
+      console.log(posts1.length);
+      res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, posts: posts1});
+    });
   });
 });
+
+// questions
+router.get('/profile/:id/questions', function(req, res, next) {
+
+  const currentUserId = req.session.userId;
+  User.findById(currentUserId, function(err, user) {
+    if (err){console.error(err);};
+    name = user.username;
+    Question.find({ user: name }).sort({ points: -1 }).populate('answers').exec(function(err, questions) {
+      if(questions === null) { res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, questions: questions}); };
+      res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, questions: questions});
+    });
+  });
+});
+
 
 // logout
 router.get('/logout', (req, res, next) => {
