@@ -1,5 +1,5 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande, Signika", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -45,10 +45,16 @@ p {
   display: flex;
   justify-content: center;
   padding: 10px;
+  color: #7c795d;
+  font-family: 'Trocchi', serif;
+  font-size: 45px;
+  font-weight: normal;
+  line-height: 48px;
+  margin: 0
 }
 
 .links {
-  width: 100px;
+  width: 200px;
   margin: auto;
   padding: 5px;
   border-top: 1px dashed gray;
@@ -61,10 +67,34 @@ p {
   border: 2px solid #5c98f9;
 }
 
+.title {
+  border-bottom: 1px solid #bcbcbc;
+  text-align: left;
+  list-style-type: none;
+}
+
+.backbutton a{
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 25px 10px 16px;
+  width: 2%;
+  float: left;
+}
+.backbutton a:hover {
+    background-color: #dddddd;
+    color: black;
+}
+.previous {
+    font-size: 30px;
+    background-color: #f1f1f1;
+    color: black;
+}
+
 #navbar-custom{
   background-color: #000000;
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 2fr 4fr 2fr;
 }
 
 #navbar-custom a{
@@ -92,7 +122,7 @@ p {
 
 .navbar-form{
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 6fr 1fr;
 }
 
 .navbar-form .form-group{
@@ -119,11 +149,11 @@ p {
 .lol {
   column-count: 3;
   list-style: none;
-  padding: 30px;
+  padding: 0 50px;
 }
 
 .lol li {
-  padding: 5px;
+  padding: 10px;
 }
 
 .countrieslist {
@@ -137,7 +167,7 @@ p {
 
 .login-newuser{
     display: flex;
-    padding: 100px;
+    padding: 30px 100px;
     justify-content: center;
     align-content: center;
 }
@@ -152,6 +182,9 @@ p {
   display: flex;
   justify-content: center;
   padding-top: 10px;
+  color: #cc0000;
+  font-size: 48px;
+  font-family: 'Signika', sans-serif;
 }
 
 .layout_3col_left {
@@ -165,7 +198,15 @@ p {
 
 .profileheader {
   padding: 15px;
-  display: grid;
+  color: #111;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 75px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+  border-bottom: 3px double black;
+  margin-bottom: 25px;
 }
 
 #about {
@@ -247,4 +288,9 @@ p {
 }
 #privacypolicy li {
   padding: 5px;
+}
+
+#errorpage {
+  background-image: url("404background.jpg");
+  background-size: cover;
 }

@@ -9,7 +9,7 @@ const PostSchema = new Schema({
   points: { type: Number, default: 0 },
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   yesno: {type: Boolean, required: true},
-  voters: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+  voters: [{ type: String}],
 });
 
 module.exports = mongoose.model('Post', PostSchema);

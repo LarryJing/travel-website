@@ -12,18 +12,17 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
   //
   const user = new User(req.body);
-  User.find({username: req.body.username}, function(err, user1) {
-    if (typeof user1.username === 'undefined') {
+  User.find({username: user.username}, function(err, user1) {
+    if (user1 == '' || !user1) {
       user.save(function(err, user) {
         if(err) return res.redirect(`/users/new?err=${err}`);
         return res.redirect('/login');
       });
     }
     else {
-      console.log("user: " + user + "username: " + user.username);
-      res.render('error', {title: "Username is taken"});
+      res.render('users/new', { message: "Username is taken"});
     }
-  })
+  });
 });
 
 module.exports = router;

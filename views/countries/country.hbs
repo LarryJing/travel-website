@@ -1,104 +1,109 @@
-<div>
-  <div class="countrytitle row justify-content-center">
-    <h1>{{country.countryname}}</h1>
+<body>
+  <div class="backbutton">
+    <a href="/countries" class="previous">&#8249;</a>
   </div>
-  <div class="row justify-content-center links">
-    <a href="/countries/{{country.id}}/posts/new">New Post</a><br/>
-  </div>
-  <div class="row justify-content-center links">
-    <a href="/countries/{{country.id}}/questions">Questions?</a><br/>
-  </div>
-</div>
-
-<div class='left-col'>
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <h1 class="dodont">Do's</h1>
-      {{#each dos as |post|}}
-        <div class="card mb-0">
-          <div class="card-body">
-            <h3 class="card-title text-center">{{post.title}}</h3>
-            <p>{{post.body}}</p>
-          </div>
-
-          <div class="card-footer text-muted text-right">
-            <span class="points-span">{{post.points}} points </span>
-
-            <div class="btn-group btn-group-sm">
-              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
-                <input type="hidden" name="points" id="post-points" value="-1">
-                <button type="submit" class="downvote-button">-</button>
-              </form>
-
-              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
-                <input type="hidden" name="points" id="post-points" value="1">
-                <button type="submit" class="upvote-button">+</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- Add everything between the <ul>...</ul> tags -->
-        <div class="comments">
-          <ul style="padding-left: 0">
-            {{#each post.comments as |comment|}}
-              <div class="card-footer text-muted text-center mb-0">
-                <p>{{comment.body}}</p>
-              </div>
-            {{/each}}
-            <div class="text-center" style="padding:10px">
-              <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
-            </div>
-          </ul>
-        </div>
-      {{/each}}
+  <div>
+    <div class="countrytitle row justify-content-center" style="font-family: 'Signika', sans-serif; padding-right: 30px">
+      <h1>{{country.countryname}}</h1>
+    </div>
+    <div class="row justify-content-center links" style="font-size: 20px">
+      <a href="/countries/{{country.id}}/posts/new">New Post</a><br/>
+    </div>
+    <div class="row justify-content-center links" style="font-size: 20px">
+      <a href="/countries/{{country.id}}/questions">Questions?</a><br/>
     </div>
   </div>
 
-</div>
-<div class='right-col'>
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <h1 class="dodont">Don'ts</h1>
-      {{#each donts as |post|}}
-        <div class="card mb-0">
-          <div class="card-body">
-            <h3 class="card-title text-center">{{post.title}}</h3>
-            <p>{{post.body}}</p>
-          </div>
-
-          <div class="card-footer text-muted text-right">
-            <span class="points-span">{{post.points}} points </span>
-
-            <div class="btn-group btn-group-sm">
-              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
-                <input type="hidden" name="points" id="post-points" value="-1">
-                <button type="submit" class="downvote-button">-</button>
-              </form>
-
-              <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
-                <input type="hidden" name="points" id="post-points" value="1">
-                <button type="submit" class="upvote-button">+</button>
-              </form>
+  <div class='left-col'>
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="dodont">Do's</h1>
+        {{#each dos as |post|}}
+          <div class="card mb-0">
+            <div class="card-body">
+              <h3 class="card-title text-center">{{post.title}}</h3>
+              <p>{{post.body}}</p>
             </div>
-          </div>
-        </div>
-        <!-- Add everything between the <ul>...</ul> tags -->
-        <div class="comments">
-          <ul style="padding-left: 0">
-            {{#each post.comments as |comment|}}
-              <div class="card-footer text-muted text-center mb-0">
-                <p>{{comment.body}}</p>
+
+            <div class="card-footer text-muted text-right">
+              <span class="points-span">{{post.points}} points </span>
+
+              <div class="btn-group btn-group-sm">
+                <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                  <input type="hidden" name="points" id="post-points" value="-1">
+                  <button type="submit" class="downvote-button">-</button>
+                </form>
+
+                <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                  <input type="hidden" name="points" id="post-points" value="1">
+                  <button type="submit" class="upvote-button">+</button>
+                </form>
               </div>
-            {{/each}}
-            <div class="text-center" style="padding:10px">
-              <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
             </div>
-          </ul>
-        </div>
-
-      {{/each}}
-
+          </div>
+          <!-- Add everything between the <ul>...</ul> tags -->
+          <div class="comments">
+            <ul style="padding-left: 0">
+              {{#each post.comments as |comment|}}
+                <div class="card-footer text-muted text-center mb-0">
+                  <p>{{comment.body}}</p>
+                </div>
+              {{/each}}
+              <div class="card-footer text-center mb-0" style="padding:10px">
+                <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
+              </div>
+            </ul>
+          </div>
+        {{/each}}
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>
+  <div class='right-col'>
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="dodont">Don'ts</h1>
+        {{#each donts as |post|}}
+          <div class="card mb-0">
+            <div class="card-body">
+              <h3 class="card-title text-center">{{post.title}}</h3>
+              <p>{{post.body}}</p>
+            </div>
+
+            <div class="card-footer text-muted text-right">
+              <span class="points-span">{{post.points}} points </span>
+
+              <div class="btn-group btn-group-sm">
+                <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                  <input type="hidden" name="points" id="post-points" value="-1">
+                  <button type="submit" class="downvote-button">-</button>
+                </form>
+
+                <form action="/countries/{{post.country}}/posts/{{post.id}}" method="post" class="inline-form">
+                  <input type="hidden" name="points" id="post-points" value="1">
+                  <button type="submit" class="upvote-button">+</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Add everything between the <ul>...</ul> tags -->
+          <div class="comments">
+            <ul style="padding-left: 0">
+              {{#each post.comments as |comment|}}
+                <div class="card-footer text-muted text-center mb-0">
+                  <p>{{comment.body}}</p>
+                </div>
+              {{/each}}
+              <div class="card-footer text-center mb-0" style="padding:10px">
+                <a href="/countries/{{../country.id}}/posts/{{post.id}}/comments/new">New comment</a>
+              </div>
+            </ul>
+          </div>
+
+        {{/each}}
+
+      </div>
+    </div>
+
+  </div>
+</body>

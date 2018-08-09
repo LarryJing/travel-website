@@ -63,36 +63,44 @@ router.post('/', auth.requireLogin, (req, res, next) => {
 });
 
 router.post('/:id', auth.requireLogin, (req, res, next) => {
+  console.log("Test")
   const currentUserId = req.session.userId;
   var found = 0;
+  let voterlist;
 
   Post.findById(req.params.id, function(err, post) {
+    voterlist = post.voters
     User.findById(currentUserId, function(err, user) {
        if (err){console.error(err);};
 
-       for (let i = 0; i < post.voters.length; i++)
-       {
-         console.log('goes through for')
-         if (post.voters[i].username === user.username)
-         {
-           console.log("found");
-           found = 1;
-         }
+       // for (let i = 0; i < post.voters.length - 1; i++)
+       // {
+       //   console.log('goes through for')
+       //   if (post.voters[i] === user._id)
+       //   {
+       //     console.log("found");
+       //     found = 1;
+       //   }
+       // }
+       console.log(user._id, post.voters, typeof user._id)
+       if(post.voters.includes(String(user._id))){
+         console.log("Included")
+         res.redirect(`/countries/${post.country}`);
        }
-       post.voters.push(user);
-    });
-    if (found == 1)
-    {
-      console.log("found 2");
-      return res.redirect(`/countries/${post.country}`);
-    }
+       else{
+         let points = post.points + parseInt(req.body.points);
+         voterlist.push(user._id);
 
-    post.points += parseInt(req.body.points);
-    post.save(function(err, post) {
-      if(err) { console.error(err) };
+         Post.findByIdAndUpdate(post._id, { $set: { voters: voterlist, points: points}}, function (err, post) {
+           if (err) return handleError(err);
+           console.log(post)
+           return res.redirect(`/countries/${post.country}`);
+         });
 
-      return res.redirect(`/countries/${post.country}`);
-    });
+       }
+    })
+
+
   });
 });
 

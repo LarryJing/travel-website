@@ -75,7 +75,7 @@ router.post('/login', (req, res, next) => {
       const next_error = new Error("Username or password incorrect");
       next_error.status = 401;
 
-      return next(next_error);
+      return res.render('login', { message: "Username or password incorrect"});
     } else {
       req.session.userId = user._id;
       return res.redirect('/') ;
@@ -89,13 +89,17 @@ router.get('/profile/:id', function(req, res, next) {
   const currentUserId = req.session.userId;
   User.findById(currentUserId, function(err, user) {
     if (err){console.error(err);};
-    name = user.username;
-    console.log(name);
-    Post.find({ user: name }).sort({ points: -1 }).populate('comments').exec(function(err, posts1) {
-      if(posts1 === null) { res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, posts: userposts}); };
-      console.log(posts1.length);
-      res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, posts: posts1});
-    });
+    console.log(user);
+    if (typeof user === 'undefined' || !user) {
+      res.render('login', { message: "Please sign in again"});
+    }
+    else {
+      name = user.username;
+      Post.find({ user: name }).sort({ points: -1 }).populate('comments').exec(function(err, posts1) {
+        if(posts1 === null) { res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, posts: userposts, contenttitle: "Posts"}); };
+        res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, posts: posts1, contenttitle: "Posts"});
+      });
+    }
   });
 });
 
@@ -107,8 +111,8 @@ router.get('/profile/:id/questions', function(req, res, next) {
     if (err){console.error(err);};
     name = user.username;
     Question.find({ user: name }).sort({ points: -1 }).populate('answers').exec(function(err, questions) {
-      if(questions === null) { res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, questions: questions}); };
-      res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, questions: questions});
+      if(questions === null) { res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, questions: questions, contenttitle: "Questions"}); };
+      res.render('profile', { user:user, currentUserId: currentUserId , username: user.username, questions: questions, contenttitle: "Questions"});
     });
   });
 });
