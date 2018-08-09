@@ -63,9 +63,7 @@ router.post('/', auth.requireLogin, (req, res, next) => {
 });
 
 router.post('/:id', auth.requireLogin, (req, res, next) => {
-  console.log("Test")
   const currentUserId = req.session.userId;
-  var found = 0;
   let voterlist;
 
   Post.findById(req.params.id, function(err, post) {
@@ -73,18 +71,8 @@ router.post('/:id', auth.requireLogin, (req, res, next) => {
     User.findById(currentUserId, function(err, user) {
        if (err){console.error(err);};
 
-       // for (let i = 0; i < post.voters.length - 1; i++)
-       // {
-       //   console.log('goes through for')
-       //   if (post.voters[i] === user._id)
-       //   {
-       //     console.log("found");
-       //     found = 1;
-       //   }
-       // }
        console.log(user._id, post.voters, typeof user._id)
        if(post.voters.includes(String(user._id))){
-         console.log("Included")
          res.redirect(`/countries/${post.country}`);
        }
        else{
@@ -96,11 +84,8 @@ router.post('/:id', auth.requireLogin, (req, res, next) => {
            console.log(post)
            return res.redirect(`/countries/${post.country}`);
          });
-
        }
     })
-
-
   });
 });
 

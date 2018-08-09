@@ -59,14 +59,26 @@ router.post('/', auth.requireLogin, (req, res, next) => {
 });
 
 router.post('/:id', auth.requireLogin, (req, res, next) => {
+  const currentUserId = req.session.userId;
+  let voterlist;
   Question.findById(req.params.id, function(err, question) {
-    question.points += parseInt(req.body.points);
+    voterlist = question.voters;
+    User.findById(currentUserId, function(err, user) {
+       if (err){console.error(err);};
 
-    question.save(function(err, question) {
-      if(err) { console.error(err) };
+       if(question.voters.includes(String(user._id))){
+         res.redirect(`/countries/${question.country}/questions`);
+       }
+       else{
+         let points = question.points + parseInt(req.body.points);
+         voterlist.push(user._id);
 
-      return res.redirect(`/countries/${question.country}/questions`);
-    });
+         Question.findByIdAndUpdate(question._id, { $set: { voters: voterlist, points: points}}, function (err, question) {
+           if (err) return handleError(err);
+           return res.redirect(`/countries/${question.country}/questions`);
+         });
+       }
+    })
   });
 });
 
