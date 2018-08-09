@@ -3,29 +3,31 @@
     <a href="/countries" class="previous">&#8249;</a>
   </div>
   <div>
+    <h1 class="dodont" style="width: 35%; float: left; padding: 60px 0 0 50px">Do's</h1>
+    <h1 class="dodont" style="width: 35%; float: right; padding: 60px 100px 0 0">Don'ts</h1>
     <div class="countrytitle row justify-content-center" style="font-family: 'Signika', sans-serif; padding-right: 30px">
       <h1>{{country.countryname}}</h1>
     </div>
-    <div class="row justify-content-center links" style="font-size: 20px">
+    <div class="row justify-content-center links" style="font-size: 20px; margin-right: 7%">
       <a href="/countries/{{country.id}}/posts/new">New Post</a><br/>
     </div>
-    <div class="row justify-content-center links" style="font-size: 20px">
+    <div class="row justify-content-center links" style="font-size: 20px; margin-right: 7%">
       <a href="/countries/{{country.id}}/questions">Questions?</a><br/>
     </div>
+
   </div>
 
   <div class='left-col'>
     <div class="row justify-content-center">
       <div class="col-8">
-        <h1 class="dodont">Do's</h1>
         {{#each dos as |post|}}
-          <div class="card mb-0">
-            <div class="card-body">
-              <h3 class="card-title text-center">{{post.title}}</h3>
+          <div class="card mb-0" style="margin-top: 25px">
+            <div class="card-body" style="padding-top: 10px; padding-bottom: 0">
+              <h5 class="card-title text-center">{{post.title}}</h5>
               <p>{{post.body}}</p>
             </div>
 
-            <div class="card-footer text-muted text-right">
+            <div class="card-footer text-muted text-right" style="padding: 5px">
               <span class="points-span">{{post.points}} points </span>
 
               <div class="btn-group btn-group-sm">
@@ -62,15 +64,14 @@
   <div class='right-col'>
     <div class="row justify-content-center">
       <div class="col-8">
-        <h1 class="dodont">Don'ts</h1>
         {{#each donts as |post|}}
-          <div class="card mb-0">
-            <div class="card-body">
-              <h3 class="card-title text-center">{{post.title}}</h3>
+          <div class="card mb-0" style="margin-top: 25px">
+            <div class="card-body" style="padding-top: 10px; padding-bottom: 0">
+              <h4 class="card-title text-center">{{post.title}}</h4>
               <p>{{post.body}}</p>
             </div>
 
-            <div class="card-footer text-muted text-right">
+            <div class="card-footer text-muted text-right" style="padding: 5px">
               <span class="points-span">{{post.points}} points </span>
 
               <div class="btn-group btn-group-sm">
