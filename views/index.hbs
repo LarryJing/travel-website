@@ -16,7 +16,7 @@
     <div class="carousel-item">
       <img class="d-block w-100" src="images/carousel2.jpg" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
-        <h5 style = " color: black ">Find the Do's and Dont's about the country you're going to visit</h5>
+        <h5 style = " color: black ">Find the Dos and Dont's about the country you're going to visit</h5>
       </div>
     </div>
     <div class="carousel-item">
@@ -47,17 +47,31 @@
   <div id="about">
     <h1>About</h1>
     <div id="desc">
-      <p>Search up any country and see the do’s and don'ts of the country.  You can also ask specific questions about a country.
+      <p>Search up  and see the dos and don'ts of any country.  You can also ask specific questions about a country.
       Posts are created by the local community, and upvoted posts rise to the top. </p>
     </div>
   </div>
 
   <div class="aftercarousel">
     <div class="box a">
-      <h3>Recent Posts/Questions</h3>
+      <h3>Recent Questions</h3>
+      <div>
+        {{#each questions as |question|}}
+          <div class="recent">
+            <div class="recentquestion">
+              <p>{{question.question}}</p>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <!-- <div>
+        {{#each countries as |country|}}
+          <p>{{country.countryname}};
+        {{/each}}
+      </div> -->
     </div>
     <div class="box b">
-      <h2>Do's and Don'ts on over</h2>
+      <h2>Dos and Don'ts on over</h2>
       <div id="numc">
         <h1>20</h1>
       </div>

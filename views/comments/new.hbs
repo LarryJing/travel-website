@@ -1,12 +1,15 @@
+<div class="backbutton">
+  <a href="/countries/{{country.id}}" class="previous">&#8249;</a>
+</div>
 <div class="row" style="display: flex;
 justify-content: center;
-align-content: center;padding: 20px">
+align-content: center;padding: 20px; padding-right: 50px;">
   <div>
     <form action="/countries/{{country.id}}/posts/{{post.id}}/comments" method="post" id="new-comment-form">
       <legend>New Comment</legend>
 
       <div class="form-group">
-        <textarea type="text" name="body" class="form-control" id="comment-body" placeholder="Body" form="new-comment-form"></textarea>
+        <textarea type="text" name="body" class="form-control" autofocus="autofocus" id="comment-body" placeholder="Body" form="new-comment-form"></textarea>
       </div>
 
       <div>

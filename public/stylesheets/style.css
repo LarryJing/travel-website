@@ -262,6 +262,7 @@ p {
 }
 
 .b {
+  height: 200px;
   color: black;
   border: 1px ridge black;
 }
@@ -293,4 +294,9 @@ p {
 #errorpage {
   background-image: url("404background.jpg");
   background-size: cover;
+}
+
+.recentquestion {
+  padding: 7px;
+  font-size: 17px;
 }

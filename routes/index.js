@@ -39,12 +39,28 @@ router.get('/', function(req, res, next) {
   //   });
   // }
   const currentUserId = req.session.userId;
+  var countries = [];
   if (!currentUserId){
-    res.render('index', { title: 'SafeTravels', currentUserId: currentUserId});
+    Question.find().sort({ createdAt:-1 }).limit(10).exec(function(err, questions) {
+      // for (let i = 0; i < questions.length; i++) {
+      //   Country.find({req.params.countryId:questions[i].country}).exec(function(err, country) {
+      //     countries.push(country);
+      //   });
+      // }
+      console.log(countries);
+      res.render('index', { title: 'SafeTravels', currentUserId: currentUserId, questions: questions, countries: countries});
+    });
   }
   else{
     User.findById(currentUserId, function(err, user) {
-        res.render('index', { title: 'SafeTravels', currentUserId: currentUserId, username: user.username});
+      Question.find().sort({ createdAt:-1 }).limit(10).exec(function(err, questions) {
+        // for (let i = 0; i < questions.length; i++) {
+        //   Country.find({countryId:questions[i].country}).exec(function(err, country) {
+        //     countries.push(country);
+        //   });
+        // }
+        res.render('index', { title: 'SafeTravels', currentUserId: currentUserId, questions: questions, countries: countries});
+      });
     });
   }
 });

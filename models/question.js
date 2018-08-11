@@ -8,6 +8,7 @@ const QuestionSchema = new Schema({
   points: { type: Number, default: 0 },
   answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }],
   voters: [{ type: String}],
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Question', QuestionSchema);

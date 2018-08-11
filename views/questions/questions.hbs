@@ -14,12 +14,12 @@
   <div class="col-8">
     {{#each questions as |question|}}
       <div class="card mb-0">
-        <div class="card-body" style="padding-top: 15px; padding-bottom: 0">
+        <div class="card-body" style="padding-top: 10px; padding-bottom: 0">
           <h5>Question:</h5>
-          <h3 class="card-title text-center">{{question.question}}</h3>
+          <h4 class="card-title text-center">{{question.question}}</h4>
         </div>
 
-        <div class="card-footer text-muted text-right" style="padding-left: 0">
+        <div class="card-footer text-muted text-right" style="padding: 5px 10px 5px 0">
           <div class="text-right" style="width:55%; float: left; font-size: 20px;">Answers</div>
           <span class="points-span" style="width: 30%; float: center; padding: 5px">{{question.points}} points </span>
 

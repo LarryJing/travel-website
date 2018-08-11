@@ -1,12 +1,15 @@
+<div class="backbutton">
+  <a href="/countries/{{country.id}}/questions" class="previous">&#8249;</a>
+</div>
 <div style="display: flex;
 justify-content: center;
-align-content: center;padding: 20px">
+align-content: center;padding: 20px; padding-right: 50px;">
   <form action="/countries/{{country._id}}/questions" method="post">
     <legend>New Question</legend>
 
     <div class="form-group">
       <label for="post-subject">Question</label>
-      <input type="text" name="question" class="form-control" id="question-title">
+      <input type="text" name="question" class="form-control" autofocus="autofocus" id="question-title">
     </div>
 
     <div>

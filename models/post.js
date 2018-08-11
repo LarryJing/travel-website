@@ -10,6 +10,7 @@ const PostSchema = new Schema({
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   yesno: {type: Boolean, required: true},
   voters: [{ type: String}],
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Post', PostSchema);
